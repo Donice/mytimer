@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Display from "./components/Display";
+import Display from "./components/display";
 import Buttons from "./components/Buttons";
 import Laps from "./components/Laps";
 // import { useEffect } from "react";
