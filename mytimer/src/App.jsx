@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Display from "./components/display";
+// import Display from "./components/Display";
+import Display from "./components/Display";
 import Buttons from "./components/Buttons";
 import Laps from "./components/Laps";
 // import { useEffect } from "react";
@@ -14,7 +15,7 @@ function App() {
   const [intervals, setIntervals] = useState();
   const [status, setStatus] = useState(0);
   const [laps, setLaps] = useState([]);
-  const [lapCounter, setLapCounter] = useState(0)
+  const [lapCounter, setLapCounter] = useState(0);
 
   const start = () => {
     beginTimer();
@@ -57,7 +58,7 @@ function App() {
   const restart = () => {
     clearInterval(intervals);
     setStatus(0);
-    setLapCounter(0);
+    setLaps([]);
     setTimer({
       hours: 0,
       minutes: 0,
@@ -70,9 +71,24 @@ function App() {
 
   const startLap = () => {
     setStatus(2);
-    setLapCounter(e => e + 1)
-    
-  }
+    setLaps([
+      <div className="flex-column space-y-2">
+        <hr />
+        <div className="flex flex-row space-x-64">
+          <p>Lap {laps.length + 1}</p>
+          <span className="text- font-bold">
+            {/* {updatedHours >= 10 ? updatedHours : "0" + updatedHours}: */}
+            {updatedMinutes >= 10 ? updatedMinutes : "0" + updatedMinutes}:
+            {updatedSeconds >= 10 ? updatedSeconds : "0" + updatedSeconds}:
+            {updatedMilliseconds >= 10
+              ? updatedMilliseconds
+              : "0" + updatedHours}
+          </span>
+        </div>
+      </div>,
+      ...laps,
+    ]);
+  };
 
   return (
     <div className="App">
@@ -94,7 +110,7 @@ function App() {
           timer={timer}
           // setTimer = {setTimer}
           laps={laps}
-          lapCounter = {lapCounter}
+          lapCounter={lapCounter}
         />
       </div>
     </div>
