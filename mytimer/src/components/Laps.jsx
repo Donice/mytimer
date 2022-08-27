@@ -21,7 +21,7 @@ function Laps(props) {
     <div className="flex-column space-y-2">
       <hr />
       <div className="flex flex-row space-x-64">
-        <p>Lap {props.lapCounter} </p>
+        <p>Lap {props.laps.length + 1} </p>
         <span className="text- font-bold">
           {hours()}
           {props.timer.minutes >= 10
@@ -37,6 +37,8 @@ function Laps(props) {
             : "0" + props.timer.milliseconds}
         </span>
       </div>
+
+      <div>{props.laps}</div>
       
     </div>
   );
@@ -62,3 +64,7 @@ export default Laps;
 //     );
 //   }
 // };
+
+// git commit -m "final commit"
+// 
+
